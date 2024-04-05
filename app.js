@@ -1,43 +1,64 @@
 const fs = require('fs');
 
-//create a file
-// fs.writeFile('file.txt','data content', (err)=>{
-//     if(err){
-//         console.log(err);
-//     }
-//     else {
-//         console.log('File successfully created');
-//         fs.readFile('file.txt','utf8',(err, file)=>{
-//             if(err){
-//                 console.log(err);
-//             } else {    
-//                 console.log(file);
-//             }            
-//         }
-//         );
-//     }
-// });
+// fs.mkdir('tutorial',(err)=>{
+// if(err){
+//     console.log(err);
+// }
+// else {
+//     //console.log('folder created successfully created');
 
-//rename file
-// fs.rename('file.txt','arquivo.txt', (err)=>{
-//     if(err){
-//         console.log(err);
-//     } else {
-//         console.log('Successfulyy renamed the file');
-//     }
-// });
-
-//append content to file
-// fs.appendFile('arquivo.txt','\nthird data appended',(err)=>{
-//         if(err){
+//     // delete folder
+//     // fs.rmdir('tutorial',(err)=>{
+//     //     if(err){
+//     //         console.log(err);
+//     //     }
+//     //     else {
+//     //      console.log('Successfully deleted folder');
+//     //     }
+//     //  } );
+//     fs.writeFile('./tutorial/test.txt','data content again',(err)=>{
+//              if(err){
 //             console.log(err);
-//         } else {
-//             console.log('Successfully appended data to the file');
-//         } });
-//delete file
-fs.unlink('arquivo.txt',(err)=>{
+//         }
+//         else {
+//          console.log('Successfully deleted folder');
+//         }
+//     })
+// }
+// })
+
+//delete a nom empty folder
+// fs.unlink('./tutorial/test.txt', 
+// (err)=>{
+//     if(err){
+//         console.log(err)
+//     }else{
+//         fs.rmdir('tutorial', (err)=>{
+//             if(err){
+//                 console.log(err)
+//             }else{
+//                 console.log('Deleted folder')
+//             }
+//         });
+//     }
+// }
+// );
+
+//delete a multiple files folder content
+fs.readdir('tutorial',(err, files)=>{
+    if(err){
+        console.log(err)
+    }
+    else{
+        for(let file of files){
+        fs.unlink('./tutorial/' + file, (err)=>{
             if(err){
-            console.log(err);
-        } else {
-            console.log('Successfully appended data to the file');
-        } });
+                console.log(err)
+            }else{
+                console.log('Deleted folder')
+            }
+        })
+        }
+        //console.log(files);
+    }
+})
